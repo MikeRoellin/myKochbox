@@ -3,60 +3,17 @@
 
   include 'dbh.php';
 ?>
+<!doctype html>
 <html>
+<html lang="en">
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<style>
-	body {
-		margin: 0;
-		font-family: Arial, Helvetica, sans-serif;
-		}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
 
-	.header {
-		overflow: hidden;
-		background-color: #f1f1f1;
-		padding: 20px 10px;
-		}
-
-	.header a {
-		float: left;
-		color: black;
-		text-align: center;
-		padding: 12px;
-		font-size: 18px;
-		line-height: 25px;
-		border-radius: 4px;
-		}
-	.header a.logo {
-		font-size: 25px;
-		font-weight: bold;
-		}
-	.header a:hover {
-		background-color: #ddd;
-		color: white;
-		}
-	.header a.active {
-		background-color: dodgerblue;
-		color: white;
-		}
-	.header-right {
-		 float:right;
-		}
-
-	@media screen and (max-width: 500px) {
-		.header a {
-			float: none;
-			display: block;
-			text-align: left;
-			}
-		.header-right {
-			float: none;
-			}
-		}
-	.zutatenAuswahl{
-		margin-bottom: 2px;
-		}
-</style>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -73,17 +30,28 @@
     });
   });
 </script>
+
 </head>
 <body>
-
-	<div class="header">
-		<a href="http://localhost:8080/myKochbox/Test_Seite.html" class="logo"> myKochbox </a>
-		<div class="header-right">
-			<a href="http://localhost:8080/myKochbox/Test_Seite.html">Home</a>
-			<a class="active" href="http://localhost:8080/myKochbox/zutaten.php">Zutaten</a>
-			<a href="#about">About</a>
-		</div>
-	</div>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	  <a class="navbar-brand" href="http://localhost:8080/myKochbox/Test_Seite.html">myKochbox</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	    <ul class="navbar-nav nav-pills">
+	      <li class="nav-item">
+	        <a class="nav-link" href="http://localhost:8080/myKochbox/Test_Seite.html">Home</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link active" href="http://localhost:8080/myKochbox/zutaten.php">Zutaten</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">About</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
 
 	<div>
 		<h1> Wähle deine Zutaten </h1>
@@ -170,31 +138,42 @@
 </form>
 	<div id="rezepteDB">
 		<?php
-		$abfrage = "SELECT * FROM rezept LIMIT 0";
+		include 'dbh.php';
+
+		$abfrage = "SELECT * FROM rezept LIMIT 0 ";
 		$resultat = mysqli_query($db_link, $abfrage)
-			or die ("Konnte die Abfrage nicht ausführen");
+		  or die ("Konnte die Abfrage nicht ausführen");
 		if (mysqli_num_rows($resultat) > 0) {
-			// Resultate in Reihen ausgeben
-			echo "<table border=1>";
-				while($row = mysqli_fetch_assoc($resultat)) {
-					echo "<tr>";
-					echo "<td>"; echo "id: " . $row["id"]; echo "</td>";
-					echo "<td>"; echo $row["bild"]; echo "</td>";
-					echo "<td>"; echo "Zutaten: " . $row["zutaten"]; echo "</td>";
-					echo "<td>"; echo "Beschreibung: " . $row["beschreibung"]; echo "</td>";
-					echo "</tr>";
-					 }
-			echo "</table>";
-				}
+		  // Resultate in Reihen ausgeben
+		  echo "<table class='table'>";
+		    while($row = mysqli_fetch_assoc($resultat)) {
+		      echo "<tr>";
+		      echo "<td>"; echo "id: " . $row["id"]; echo "</td>";
+		      echo "<td>"; echo $row["bild"]; echo "</td>";
+		      echo "<td>"; echo "Zutaten: " . $row["zutaten"]; echo "</td>";
+		      echo "<td>"; echo "Beschreibung: " . $row["beschreibung"]; echo "</td>";
+		        echo "</tr>";
+		       }
+		  echo "</table>";
+		  }
 		else {
-				echo "0 RESULTATE";
-					}
+		    echo "0 RESULTATE";
+		      }
 		?>
+
 	</div>
 
-	<button>Finde Rezepte</button>
+	<button type="button" class="btn btn-success">Finde Rezepte</button>
 
 
-
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+					crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+					integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+					crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+					integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+					crossorigin="anonymous"></script>
 </body>
 </html>
