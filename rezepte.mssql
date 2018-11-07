@@ -1,0 +1,80 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Erstellungszeit: 07. Nov 2018 um 15:21
+-- Server-Version: 10.1.31-MariaDB
+-- PHP-Version: 7.2.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `rezepte`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `rezept`
+--
+
+CREATE TABLE `rezept` (
+  `id` int(11) NOT NULL,
+  `titel` varchar(50) DEFAULT NULL,
+  `bild` varchar(30) NOT NULL,
+  `zutaten` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `beschreibung` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_german2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `rezept`
+--
+
+INSERT INTO `rezept` (`id`, `titel`, `bild`, `zutaten`, `beschreibung`) VALUES
+(1, 'Spaghetti Carbonara', 'image 1', 'Pasta, Schinken, Ei, Parmesan', 'Den Speck bzw. Schinken nicht zu fein w?rfeln. In Oliven?l glasig anschwitzen. Beiseitestellen. Die Pasta in reichlich Salzwasser al dente kochen - auf keinen Fall weich, da die Pasta sp?ter noch etwas nachkocht. Gegen Ende der Kochzeit etwas Kochwasser (1 - 2 Espressot?sschen) auffangen oder einfach absch?pfen.\r\n\r\nW?hrenddessen die Eier mit den beiden K?sesorten verquirlen. Leicht salzen, schwarzen Pfeffer nach Geschmack mahlen und zuf?gen.\r\n\r\nDen Speck bzw. Schinken erneut erhitzen. Aufgefangenes Kochwasser hinzuf?gen und aufkochen lassen. Die Pasta zuf?gen, verr?hren. Eier-K?se-Mischung zuf?gen. Leicht stocken lassen und gut r?hren, damit die Mischung die Pasta z?rtlich umh?llt.\r\n\r\nDazu passt am besten ein guter Frascati Superiore. So m?gen\'s die R?mer im Original.'),
+(2, 'Lachs in Curry-Kokos-Soße mit Brokkolipüree', 'image 2', 'Lachsfilet, Brokkoli, Kokosmilch, Currypaste, Kokos?l, ', 'Lachs in Curry-Kokos-Soße mit Brokkolipüree: \r\nZubereitung\r\nArbeitszeit: ca. 20 Min. / Koch-/Backzeit: ca. 10 Min. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe\r\n\r\nDas Lachsfilet antauen lassen.\r\n\r\nDen Brokkoli in kleine Röschen teilen und in etwas Wasser in einem Topf so lange dünsten, bis er weich ist. Das Wasser abgießen. \r\n\r\nDas Kokosöl in einer Pfanne erhitzen, den Lachs darin von beiden Seiten anbraten. Die Currypaste hinzufügen und mitbraten. Danach mit der Hälfte der Kokosmilch ablöschen und auf niedriger Stufe etwas einköcheln lassen.\r\n\r\nDie restliche Kokosmilch zum Brokkoli geben und alles mit einem Mixstab pürieren. Mit Salz, Pfeffer und Muskat abschmecken.\r\n\r\nDen Lachs mit der Soße und dem Püree auf einem Teller anrichten und servieren.'),
+(3, 'Bunter Reissalat', 'image 3', 'Zucker, Sojasauce, Mayonnaise, Mandarine, Reis, Zwiebeln, Kochschinken', 'Bunter Reissalat:\r\nZubereitung\r\nArbeitszeit: ca. 30 Min. Ruhezeit: ca. 1 Std. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe\r\n\r\nDen Reis gar kochen und kalt stellen. \r\n\r\nPaprika, Zwiebel und Schinken klein schneiden. Die Mandarinen abtropfen lassen und den Saft aufbewahren. Paprika, Zwiebel, Schinken und Mandarinen zusammen in eine Schüssel geben. Den erkalteten Reis unterheben. \r\n\r\nAus der Salatmayonnaise, Zucker und der hellen Sojasauce, sowie Mandarinensaft nach Geschmack eine Sauce rühren und unter die Salatzutaten heben. \r\n\r\nBis zum Servieren kalt stellen und etwas ziehen lassen.'),
+(4, 'Pasta Test', 'image 4', 'Pasta', 'ihoaibfowbo');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `zutaten`
+--
+
+CREATE TABLE `zutaten` (
+  `id` int(11) NOT NULL,
+  `zutaten` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `zutaten`
+--
+
+INSERT INTO `zutaten` (`id`, `zutaten`) VALUES
+(1, 'Schweinefleisch, Brot, Karotten');
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `rezept`
+--
+ALTER TABLE `rezept`
+  ADD PRIMARY KEY (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
