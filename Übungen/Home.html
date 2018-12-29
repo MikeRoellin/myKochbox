@@ -1,0 +1,92 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet"
+				href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+				integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+				crossorigin="anonymous">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style>
+	body {
+		margin: 0;
+		font-family: Arial, Helvetica, sans-serif;
+    padding-top: 50px;
+
+		}
+
+		body, html {
+		  height: 100%;
+		  margin: 0;
+		}
+		.button{
+			height: 50%;
+			width: 50;
+		}
+
+		.bg {
+		  background-image: url("images/background.jpg");
+			color: white;
+
+		  /* Full height */
+		  height: 100%;
+
+		  /* Center and scale the image nicely */
+		  background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+		}
+		.text {
+			position: absolute;
+			top: 100px;
+		}
+
+		</style>
+</head>
+
+<body>
+<div class="header">
+	<!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
+		<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+		  <a class="navbar-brand" href="http://localhost:8080/myKochbox/Home.html">myKochbox</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+		    <ul class="navbar-nav nav-pills">
+		      <li class="nav-item">
+		        <a class="nav-link active" href="http://localhost:8080/myKochbox/Home.html">Startseite</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link " href="http://localhost:8080/myKochbox/Input.php">Zutaten</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Über</a>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+</div>
+
+	<div class="bg">
+		<div class="text">
+			<h1> Willkommen bei myKochbox </h1>
+			<p> Finde ein perfektes Menü, indem du alle Wunschzutaten auswählst </p>
+			<p> Gehe weiter zur Seite "Zutaten" </p>
+			<form class="button" action="Input.php">
+				<input type="submit" value="Zu den Zutaten">
+			<form>
+		</div>
+	</div>
+	<!-- Code für Bootstrapverwendung -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+					integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+					crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+					integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+					crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+					integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+					crossorigin="anonymous"></script>
+</body>
+</html>

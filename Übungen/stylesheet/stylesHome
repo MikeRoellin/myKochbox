@@ -1,0 +1,59 @@
+
+header{
+  height: 50px;
+}
+.navbar {
+min-height: 50px;
+}
+
+.navbar-brand {
+padding: 0 15px;
+height: 50px;
+line-height: 50px;
+}
+
+.navbar-toggle {
+/* (80px - button height 34px) / 2 = 23px */
+margin-top: 8px;
+padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+.navbar-nav > li > a {
+/* (80px - line-height of 27px) / 2 = 26.5px */
+padding-top: 11.5px;
+padding-bottom: 11.5px;
+line-height: 27px;
+}
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+  }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+main {
+  margin-top: 100px;
+}
+.bg {
+  background-image: url("images/background.jpg");
+  color: white;
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.green-background {
+  background-color: green;
+}
+.white {
+  color: white;
+}
