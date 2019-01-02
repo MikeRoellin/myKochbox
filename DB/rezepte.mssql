@@ -1,0 +1,360 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Erstellungszeit: 20. Dez 2018 um 10:09
+-- Server-Version: 10.1.31-MariaDB
+-- PHP-Version: 7.2.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Datenbank: `rezepte`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `auswahl`
+--
+
+CREATE TABLE `auswahl` (
+  `id` int(11) NOT NULL,
+  `zutat` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `matching`
+--
+
+CREATE TABLE `matching` (
+  `zutat_id` int(10) NOT NULL,
+  `rezept_id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `matching`
+--
+
+INSERT INTO `matching` (`zutat_id`, `rezept_id`) VALUES
+(1, 1),
+(1, 3),
+(2, 1),
+(3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `normalform`
+--
+
+CREATE TABLE `normalform` (
+  `id` int(11) NOT NULL,
+  `zutat` varchar(300) NOT NULL,
+  `primary` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `normalform`
+--
+
+INSERT INTO `normalform` (`id`, `zutat`, `primary`) VALUES
+(1, 'Pasta', 1),
+(3, 'Pasta', 2),
+(3, 'Parmesan', 3),
+(1, 'Schinken', 4),
+(1, 'Ei', 5),
+(1, 'Parmesan', 6),
+(2, 'Lachs', 7),
+(2, 'Brokkoli', 8),
+(2, 'Kokosmilch', 9),
+(2, 'Currypaste', 10),
+(2, 'Kokosoel', 11),
+(5, 'Joghurt', 12),
+(5, 'Knoblauch', 13),
+(5, 'Cayennepfeffer', 14),
+(5, 'Poulet', 15),
+(5, 'Tomate', 16),
+(5, 'Butter', 17),
+(5, 'Zimt', 18),
+(5, 'Zwiebel', 19),
+(6, 'Schwein', 20),
+(6, 'Tomate', 21),
+(6, 'Kaese', 22),
+(6, 'Ei', 23),
+(7, 'Pasta', 24),
+(7, 'Spinat', 25),
+(7, 'Zwiebel', 26),
+(7, 'Lachs', 27),
+(7, '', 28),
+(8, 'Kartoffel', 29),
+(8, 'Milch', 30),
+(8, 'Knoblauch', 31),
+(8, 'Käse', 32),
+(9, 'Ei', 33),
+(9, 'Milch', 34),
+(9, 'Apfel', 35),
+(9, 'Speck', 36),
+(10, 'Banane', 37),
+(10, 'Zimt', 38),
+(10, 'Apfel', 39),
+(10, 'Ei', 40),
+(10, 'Walnuss', 41),
+(11, 'Poulet', 42),
+(11, 'Orange', 43),
+(11, 'Karottte', 44),
+(11, 'Knoblauch', 45),
+(12, 'Brot', 47),
+(12, 'Apfel', 48),
+(12, 'Ei', 49),
+(12, 'Milch', 50),
+(11, 'Reis\r\n', 51),
+(4, 'Reis', 52),
+(13, 'Schwein', 53),
+(13, 'Speck', 54),
+(13, 'Pilz', 55),
+(13, 'Tomate', 56),
+(14, 'Pasta', 57),
+(14, 'kaese', 58),
+(14, 'Speck', 59),
+(14, 'Zwiebel', 60);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `rezept`
+--
+
+CREATE TABLE `rezept` (
+  `id` int(11) NOT NULL,
+  `titel` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `bild` varchar(1000) CHARACTER SET latin1 NOT NULL,
+  `zutaten` varchar(300) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `beschreibung` varchar(10000) CHARACTER SET utf8mb4 COLLATE utf8mb4_german2_ci NOT NULL,
+  `link` varchar(2000) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Daten für Tabelle `rezept`
+--
+
+INSERT INTO `rezept` (`id`, `titel`, `bild`, `zutaten`, `beschreibung`, `link`) VALUES
+(1, 'Spaghetti Carbonara', 'http://localhost:8080/myKochbox/images/rezept_id1.jpg', 'Pasta, Schinken, Ei, Parmesan', 'Arbeitszeit: ca. 5 Min. / Koch-/Backzeit: ca. 15 Min. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe <br><br>\r\n\r\nDie Pasta in reichlich Salzwasser bissfest kochen. Den Schinken in Würfel schneiden und in wenig Butter anbraten. \r\n\r\nEigelb in einer großen Schüssel mit Salz, Pfeffer und Muskat verquirlen. Die Butter schaumig rühren und gut unter das Eigelb mischen. Die Schinkenwürfel und den geriebenen Käse gründlich unterrühren.\r\n\r\nWenn die Nudeln gar sind, abgießen, sofort zu der Mischung in die Schüssel geben, nochmal alles gründlich durchmischen, dann sogleich servieren.\r\n', 'https://www.chefkoch.de/rezepte/1491131254215808/Spaghetti-Carbonara.html'),
+(2, 'Lachs in Curry-Kokos-Soße mit Brokkolipüree', 'image 2', 'Lachsfilet, Brokkoli, Kokosmilch, Currypaste, Kokosöl, ', 'Lachs in Curry-Kokos-Soße mit Brokkolipüree: \r\nZubereitung\r\nArbeitszeit: ca. 20 Min. / Koch-/Backzeit: ca. 10 Min. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe\r\n\r\nDas Lachsfilet antauen lassen.\r\n\r\nDen Brokkoli in kleine Röschen teilen und in etwas Wasser in einem Topf so lange dünsten, bis er weich ist. Das Wasser abgießen. \r\n\r\nDas Kokosöl in einer Pfanne erhitzen, den Lachs darin von beiden Seiten anbraten. Die Currypaste hinzufügen und mitbraten. Danach mit der Hälfte der Kokosmilch ablöschen und auf niedriger Stufe etwas einköcheln lassen.\r\n\r\nDie restliche Kokosmilch zum Brokkoli geben und alles mit einem Mixstab pürieren. Mit Salz, Pfeffer und Muskat abschmecken.\r\n\r\nDen Lachs mit der Soße und dem Püree auf einem Teller anrichten und servieren.', 'https://www.chefkoch.de/rezepte/3313851492239239/Lachs-in-Curry-Kokos-Sosse-mit-Brokkolipueree.html'),
+(4, 'Bunter Reissalat', 'image 3', 'Zucker, Sojasauce, Mayonnaise, Mandarine, Reis, Zwiebeln, Kochschinken', 'Bunter Reissalat:\r\nZubereitung\r\nArbeitszeit: ca. 30 Min. Ruhezeit: ca. 1 Std. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe\r\n\r\nDen Reis gar kochen und kalt stellen. \r\n\r\nPaprika, Zwiebel und Schinken klein schneiden. Die Mandarinen abtropfen lassen und den Saft aufbewahren. Paprika, Zwiebel, Schinken und Mandarinen zusammen in eine Schüssel geben. Den erkalteten Reis unterheben. \r\n\r\nAus der Salatmayonnaise, Zucker und der hellen Sojasauce, sowie Mandarinensaft nach Geschmack eine Sauce rühren und unter die Salatzutaten heben. \r\n\r\nBis zum Servieren kalt stellen und etwas ziehen lassen.', 'https://www.chefkoch.de/rezepte/176341077103278/Bunter-Reissalat.html'),
+(5, 'Indische Butter Chicken', '', 'Joghurt, Poulet, Tomaten, Zwiebel', 'Arbeitszeit: ca. 30 Min. / Koch-/Backzeit: ca. 30 Min. Ruhezeit: ca. 1 Std. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe <br><br>\r\n\r\nDie Hähnchenbrust in Stücke schneiden. Aus 1 TL Paprikapulver, 1 EL Limonen- bzw. Zitronensaft, 1 TL Salz, 1 Becher Joghurt, 1 TL Cayennepfeffer, 1 EL Garam Masala Pulver, 1 Stück Ingwer und 1 Knoblauchzehe eine Marinade herstellen. Das Fleisch mit der Marinade mischen.\r\n\r\nMindestens eine Stunde einziehen lassen. Besser ist es, das Fleisch bereits am Vortag zu marinieren und über Nacht in den Kühlschrank zu stellen.\r\n\r\nDen Ofen auf 200 °C Ober-/Unterhitze vorheizen dann das Fleisch in einer Auflaufform für 25 Minuten garen.\r\n\r\nDie Zwiebel klein hacken und in 2 EL Butter glasig anschwitzen. Die passierten Tomaten, den Zimt, 1 TL Salz, 2 TL Cayennepfeffer, 1 Stück Ingwer und 1 Knoblauchzehe hinzugeben. Alles 20 Minuten mit Deckel und bei niedriger Temperatur köcheln lassen. Gelegentlich umrühren. Nun die restlichen 2 EL Butter, den Honig und die Sahne hinzufügen, weitere 3 Minuten köcheln. Das Fleisch aus der Marinade nehmen, in die Soße geben, kurz umrühren und 2 Minuten mitköcheln lassen.\r\n\r\nDazu passt Reis oder Naan.\r\n\r\nWer gerne Koriandergrün mag, der kann ganz am Ende noch ein paar frisch gehackte Blätter hinzufügen.', 'https://www.chefkoch.de/rezepte/2766911428603391/Indisches-Butter-Chicken-aus-dem-Ofen.html'),
+(6, 'Gefüllte Schnitzel vom Schwein mit Rahmsauce', '', 'Schweineschnitzel, Tomaten, Käse, Ei', 'Arbeitszeit: ca. 30 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe <br><br>\r\n\r\nDie am besten mit Schmetterlingsschnitt dünn geschnittenen Schnitzel nur leicht flach klopfen, innen salzen und pfeffern und auf je eine Hälfte des Fleisches je 1 gehäuften TL Tomatenmark streichen, 1 TL Basilikum streuen und 30 g Käse darauf verteilen. Die leeren Schnitzelhälften darüber klappen und die Schnitzel mit Rouladennadeln oder Zahnstochern verschließen und auch außen mit Salz und Pfeffer bestreuen. \r\n\r\nEtwas Öl in einer großen Pfanne erhitzen und die gefüllten Schnitzel darin von beiden Seiten in je 4-5 Minuten (insgesamt also 8-10 Minuten) schön braun braten. Es macht nichts, wenn etwas Käse dabei austritt, nur sollte man aufpassen, dass er nicht in der Pfanne verbrennt. Die Schnitzel herausnehmen und im Rohr warmhalten. \r\n\r\nDen Bratsatz unter Rühren mit der Sahne ablösen und die Sauce einmal kurz aufkochen lassen. Etwa 3 EL davon zu den 2 Eidottern in eine Tasse geben, verquirlen und dies in die nicht mehr kochende Sauce rühren. Das Fleisch mit dem mittlerweile ausgetretenen Saft wieder dazugeben, einmal wenden und noch kurz ziehen lassen. Die Sauce nochmals durchrühren und mit Salz und Pfeffer abschmecken.\r\n\r\nStatt Tomatenmark kann man auch in Scheiben geschnittene Tomaten einfüllen.\r\nReis mit Erbsen oder Teigwaren und Salat dazu reichen.', 'https://www.chefkoch.de/rezepte/1475731252674303/Gefuellte-Schnitzel-vom-Schwein-mit-Rahmsauce.html'),
+(7, 'Bandnudeln mit frischem Spinat und Lachs', '', 'Bandnudeln, Blattspinat, Zwiebeln, Knoblauch, Wasser, Lachs', 'Arbeitszeit: ca. 20 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe <br> <br>\r\n\r\nDie Nudeln nach Gebrauchsanweisung kochen - Achtung, frische Nudeln brauchen nur 2 - 3 Minuten (also aufs Timing achten)!\r\n\r\nDen Spinat von Stängeln (bis zum Blattanfang) befreien und gründlich waschen. Sand bekommt man am besten raus, indem man den Spinat in Wasser legt und nicht nur abbraust.\r\n\r\nDie Zwiebel in Ringe schneiden, in eine Pfanne mit hohem Rand und Deckel mit dem Öl geben und bei kleiner bis mittlerer Hitze glasig dünsten (nicht braten!). Gemüsebrühe mit Wasser mischen und dazu gießen (alternativ geht auch Weißwein statt Brühe). Den Knoblauch schälen, in möglichst kleine Stückchen schneiden und in die Pfanne geben. Nun den Spinat dazugeben. Evtl. geht das nur nach und nach, er fällt aber schnell in sich zusammen, so dass nachgelegt werden kann, falls die Pfanne nicht groß genug ist. Den Räucherlachs in Stücke schneiden und dazugeben, sobald der Spinat komplett in sich zusammen gefallen ist. Alternativ zum Räucherlachs geht auch frischer Lachs, der auf die gleiche Weise einfach gewürfelt und noch roh dazugegeben werden kann.\r\n\r\nEtwas Flüssigkeit abnehmen und in einer Tasse mit der Stärke mischen, bis sie sich löst. Dieses Gemisch wieder in die Pfanne geben, ebenso den Becher Cremefine bzw. Schmand.\r\n\r\nMit Pfeffer, Salz und (am besten frisch hinein geriebener) Muskatnuss würzen, die Nudel abgießen und untermischen und servieren.', 'https://www.chefkoch.de/rezepte/1677441275813669/Bandnudeln-mit-frischem-Spinat-und-Lachs.html'),
+(8, 'Kartoffelgratin', '', 'Kartoffel, Milch, Knoblauch, Käse', 'Arbeitszeit: ca. 20 Min. / Koch-/Backzeit: ca. 30 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe <br> <br>\r\n\r\nDie Kartoffeln schälen und in dünne Scheiben schneiden.\r\n\r\nMilch und Rahm vermischen, Knoblauch fein gehackt oder gepresst dazugeben, etwas Salz und Pfeffer sowie Rosmarin beifügen und mit den Kartoffelscheiben sanft aufkochen lassen, dann unter häufigem vorsichtigem Rühren ca. 10 Minuten köcheln lassen.\r\n\r\nEine Auflaufform mit Butter ausstreichen, die Kartoffelmasse einfüllen, mit Käse bestreuen und im vorgeheizten Ofen bei 220° ca. 15 - 20 Minuten überbacken.', 'https://www.chefkoch.de/rezepte/837601188560864/Kartoffelgratin.html'),
+(9, 'Apfel-­Thymian-­Speckpfannkuchen', '', 'Ei, Milch, Apfel, Speck', 'Arbeitszeit: ca. 25 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe <br> <br>\r\n\r\nEier und Mehl mit einem Schneebesen verrühren, Milch nach und nach unterrühren. Salzen und pfeffern. Thymianblättchen abzupfen und dazugeben. Äpfel vierteln, entkernen und in Scheiben schneiden. Speck und Äpfel in 8 Portionen einteilen.\r\n\r\n1 Portion Speck in einer Pfanne bei mittlerer Hitze auslassen. 1 Portion Äpfel und etwas Butterfett dazugeben und kurz braten. Dann etwas Teig darüber geben und unter einmaligem Wenden zu einem goldgelben Pfannkuchen ausbacken. Die Pfannkuchen sollten nicht zu groß werden, sonst kann man sie nur schlecht wenden.\r\n\r\nTipp:\r\nPfannkuchen können bei 80 Grad im Ofen warmgehalten werden.', 'https://www.chefkoch.de/rezepte/2662551418064905/Apfel-Thymian-Speckpfannkuchen.html'),
+(10, 'Bananenbrot ohne extra Fett und Zucker', '', 'Bananen, Zimt, Apfel, Eier, Walnüsse', 'Arbeitszeit: ca. 15 Min. / Koch-/Backzeit: ca. 45 Min. / Schwierigkeitsgrad: simpel / Kalorien p. P.: ca. 127 kcal <br> <br>Den Apfel schälen, entkernen und fein reiben (alternativ kann man auch Apfelmus nehmen, dem kein Zucker zugesetzt wurde), die Bananen gut zerdrücken. Nun mit den zwei Eiern schaumig schlagen. Mehl, Backpulver und Zimt mischen, zum Bananen-Apfel-Ei-Brei geben und kurz, aber gut verrühren. Zum Schluss die gehackten Walnüsse unterheben und alles in eine Kastenform füllen, je größer die Form, desto flacher das Brot. Nun bei 180°C etwa 45 Minuten backen (Stäbchenprobe!).\r\n\r\nDas Brot geht im Ofen gut hoch, fällt aber beim Abkühlen wieder etwas zusammen (so wie z. B. Käsekuchen). Der Teig bleibt eher \"schlonzig\", also kompakter als z. B. Kuchenteig. Vor dem Anschneiden unbedingt gut auskühlen lassen!\r\n\r\nSo gebacken hat bei 12 Stücken eines ca. 127 kcal. Das gesamte Brot hat dann also ca. 1524 kcal.\r\n\r\nIn einer Dose hält das Brot ca. eine Woche und schmeckt durchgezogen meiner Meinung nach sogar noch etwas besser als frisch. Auch Einfrieren klappt sehr gut.\r\nWer\'s lauwarm mag, kann die Scheiben vor dem Verzehr einfach nochmal kurz in die Mikrowelle geben.\r\n\r\nVarianten:\r\nMan kann den Teig auch in einer Springform oder in einem Muffinblech backen (Backzeiten evtl. etwas anpassen) und als Kuchen genießen, wenn der Teig nicht süß genug ist, kann man z. B. mit Honig oder Sirup nachhelfen.\r\nAuch lässt sich das Brot nach dem Auskühlen nach Belieben z. B. mit Kuvertüre überziehen, dann hat es noch mehr Kuchencharakter. \r\nSchokostückchen im Teig passen auch sehr gut, dann ist es allerdings natürlich weniger gesund.\r\n\r\nWer lieber mit Fett backt, kann den Apfel, der ersetzt nämlich hier das Fett, durch 60 ml Öl oder 80 g Butter ersetzten.\r\n\r\nAufgrund seiner Zusammensetzung eignet sich das Brot prima als Geburtstagskuchen für Kleinkinder oder als Snack für unterwegs, da kein zusätzliches Fett und kein extra Zucker in den Teig kommt und das Brot damit sehr nahrhaft, aber auch sehr lecker wird.\r\n\r\nIch backe es meistens nach Rezept und esse es lauwarm mit einer dünnen Schicht Schokocreme', 'https://www.chefkoch.de/rezepte/2733891425739452/Bananenbrot-ohne-extra-Fett-und-Zucker.html'),
+(11, 'Pouletgeschnetzeltes mit Karotten - Orangen - Soße', '', 'Poulet, Orangen, Karotten, Knoblauch, Reis', 'Arbeitszeit: ca. 20 Min. / Koch-/Backzeit: ca. 30 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: ca. 450 kcal\r\n\r\n2 Orangen schälen, dass keine weiße Haut mehr dran ist und filetieren. 1 Orange auspressen. Karotten schälen und in feine Stifte schneiden oder in Julienne hobeln. Lauchzwiebel in feine Ringe schneiden. Knoblauch, Ingwer und Chili-Schote fein schneiden. \r\nPouletfleisch mit Öl in einer großen Pfanne anbraten. Dann herausnehmen. Im verbliebenen Bratfett die Karottenstifte anbraten. Dann den Knoblauch, die Lauchzwiebel, Ingwer und Chili dazugeben und kurz mitbraten. Mit Weißwein ablöschen und reduzieren lassen. Dann den Orangensaft und die Brühe dazugeben und ebenfalls etwas reduzieren lassen. Dünsten, bis die Karottenstifte nicht mehr so \"strohig\" sind. Dann mit Sahne aufgießen und aufkochen. Das Fleisch wieder dazugeben und aufkochen. \r\nZum Schluss die Orangenfilets mit dazugeben, erwärmen und mit Salz, Pfeffer und Zitronensaft abschmecken. Man kann die Soße auch mit etwas Soßenbinder andicken.\r\n\r\nDazu Reis servieren.', 'https://www.chefkoch.de/rezepte/1596961266934579/Putengeschnetzeltes-mit-Karotten-Orangen-Sosse.html'),
+(12, 'Vogelheu', '', 'Brot, Äpfel, Eier, Milch', 'Zubereiten: 20 Minuten\r\nAuf dem Tisch in 20 Minuten <br> <br>\r\nBrot in der Butter hellbraun rösten. Äpfel dazugeben, mitrösten. Zucker daruntermischen. <br>\r\n\r\nEier, Milch und Zucker verrühren, zum Brot giessen. Hitze reduzieren und unter Rühren stocken lassen.<br>\r\n\r\nVogelheu auf Tellern anrichten und mit Zimtzucker bestreuen.<br>\r\n\r\nVogelheu ohne Äpfel zubereiten, mit Apfelmus und Zimtzucker servieren.\r\nPikante Variante: Äpfel und Zucker weglassen, Ei-Milch-Masse z.B. mit Salz, Pfeffer und Muskatnuss pikant würzen. \r\nStatt Äpfel können auch Birnen verwendet werden.', ''),
+(13, 'Schwein im Schwein', '', 'Schweinefilet, Speck, Champignons', 'Arbeitszeit: ca. 15 Min. / Schwierigkeitsgrad: simpel / Kalorien p. P.: keine Angabe<br><br>\r\n\r\nDas Schweinefilet waschen und die Silberhaut entfernen. In 20 möglichst gleich große Medaillons schneiden. Jedes Medaillon nun mit einer Scheibe Bacon umwickeln. Auf dem Boden einer Auflaufform die in Scheiben geschnittenen Pilze legen, darauf die Medaillons nebeneinander anordnen. Anschließend die Sahne mit dem Tomatenmark und den Gewürzen verrühren und über die Medaillons gießen. Das Gericht wird nun in den vorgeheizten Ofen geschoben und bei 180°C Umluft ca. 45 Minuten gegart.\r\nDazu schmecken am besten Nudeln (Farfalle) und ein grüner Salat. Das Gericht lässt sich natürlich bestens variieren, z.B. mit Knoblauch, Salbei etc.', 'https://www.chefkoch.de/rezepte/283301106614939/Schwein-im-Schwein.html'),
+(14, 'Spaghetti-Auflauf mit Speck', '', 'Spaghetti, Mozzarella, Speck, Zwiebeln', 'Arbeitszeit: ca. 30 Min. / Koch-/Backzeit: ca. 40 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: ca. 876 kcal<br><br>\r\n\r\nSpaghetti in Salzwasser bissfest kochen. Abgießen, abschrecken und abtropfen lassen.\r\n\r\nZwiebel und Knoblauch schälen und fein würfeln. Olivenöl in einer Pfanne erhitzen und die Schalotten und den Knoblauch darin glasig dünsten. Chilipulver hinzugeben und mit der Gemüsebrühe und der Sahne ablöschen. Aufkochen lassen und mit Salz, Pfeffer und Muskat würzen.\r\n\r\nBackofen auf 200 Grad (Umluft auf 180 Grad) vorheizen.\r\n\r\nMozzarella in Scheiben schneiden. Die Hälfte der Spaghetti, die Hälfte vom Mozzarella und die Hälfte vom Speck in eine gefettete Auflaufform schichten. Dann die restlichen Spaghetti darauf geben. Die Sauce darüber verteilen und mit Mozzarella und Speck zu Ende schichten. Den Auflauf im Ofen 30 Minuten garen. \r\n\r\nNach Belieben mit gehackter Petersilie bestreuen oder mit Basilikumblättern garnieren.\r\n\r\nDazu schmeckt ein Salat mit Paprika, Tomaten, Gurken und Zwiebeln.', 'https://www.chefkoch.de/rezepte/474011141136529/Spaghetti-Auflauf-mit-Speck.html');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `zutaten`
+--
+
+CREATE TABLE `zutaten` (
+  `id` int(11) NOT NULL,
+  `zutaten` varchar(100) NOT NULL,
+  `rezept_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `zutaten`
+--
+
+INSERT INTO `zutaten` (`id`, `zutaten`, `rezept_id`) VALUES
+(1, '<b>400g Pasta</b>', 1),
+(2, '<b>200g Schinken</b>', 1),
+(3, '<b>4 Eigelb</b>', 1),
+(4, '1 Becher Joghurt', 5),
+(5, '2 Zehen Knoblauch', 5),
+(6, '3 TL Cayennepfeffer', 5),
+(7, '500g Poulet', 5),
+(8, '500g Tomaten(passiert)', 5),
+(9, '4EL Butter', 5),
+(10, '1TL Zimt', 5),
+(11, '1 Zwiebel', 5),
+(12, 'Parmesan', 1),
+(13, '3 grosse Schweineschnitzel', 6),
+(14, '3 TL Tomatenmark', 6),
+(15, '3 TL Basilikum', 6),
+(16, '90g Käse (zB. Emmentaler oder Gouda)', 6),
+(17, 'Salz und Pfeffer', 6),
+(18, '250g Schlagsahne', 6),
+(19, '2 Eigelb', 6),
+(20, '<b>600g Bandnudeln</b>', 7),
+(21, '<b>500g Blattspinat</b>', 7),
+(22, '<b>1 Zwiebel</b>', 7),
+(23, '<b>2 Zehen Knoblauch</b>', 7),
+(24, '1 TL Gemüsebrühe', 7),
+(25, '<b>125ml Wasser</b>', 7),
+(26, '1 Pkt. Lachs', 7),
+(27, '1 Becher Cremefine', 7),
+(28, '1 TL Speisestärke', 7),
+(29, '2 EL Rapsöl ', 7),
+(30, 'Salz und Pfeffer', 7),
+(31, 'Muskat', 7),
+(32, '<b> 500g Kartoffeln </b>', 8),
+(33, '1/8 Liter Milch', 8),
+(34, '1/8 Liter Rahm', 8),
+(35, '<b> 1 Knoblauchzehe </b>', 8),
+(36, 'Salz und Pfeffer', 8),
+(37, 'Rosmarin', 8),
+(38, 'Butter', 8),
+(39, '<b> 3 EL Käse, frisch gerieben </b>', 8),
+(40, '<b> 4 Eier </b>', 9),
+(41, '240g Mehl', 9),
+(42, '220ml Milch ', 9),
+(43, 'Salz und Pfeffer', 9),
+(44, '<b> 2 grosse Äpfel </b>', 9),
+(45, '8 Zweige Thymian', 9),
+(46, '120g Speck', 9),
+(47, 'Butterschmalz', 9),
+(48, '<b> 3 Bananen </b>', 10),
+(49, '200g Vollkornmehl', 10),
+(50, '<b> Zimt </b>', 10),
+(51, '<b> 100g Apfel, gerieben oder Apfelmus </b>', 10),
+(52, '1 Pck. Backpulver', 10),
+(53, '<b> 2 Eier </b>', 10),
+(54, '<b> 50g Walnüsse </b>', 10),
+(55, '<b> 500g Pouletfleisch </b>', 11),
+(56, '1 El Öl ', 11),
+(57, '<b> 3 Orangen </b>', 11),
+(58, '<b> 2 Karotten </b>', 11),
+(59, '1 Lauchzwiebel', 11),
+(60, '<b> 1 Zehe Knoblauch </b>', 11),
+(61, '1 Stück Ingwer', 11),
+(62, '1/2 Chillischote', 11),
+(63, '50ml Weisswein', 11),
+(64, '300ml Hühnerbrühe', 11),
+(65, '300ml Sahne', 11),
+(66, 'Salz und Pfeffer', 11),
+(67, 'Zitronensaft', 11),
+(68, '<b>250g altes Brot</b>', 12),
+(69, '25g Butter', 12),
+(70, '2 Äpfel', 12),
+(71, '1 EL Zucker', 12),
+(72, '<b> 6 Eier </b>', 12),
+(73, '<b> 2dl Milch </b>', 12),
+(74, 'Zimtzucker', 12),
+(75, '50g Butter', 1),
+(76, 'Salz und Pfeffer', 1),
+(77, '<b> 250g Reis </b>', 4),
+(78, '<b> 1/2 Glas Mayonnaise </b>', 4),
+(79, '<b> 2 Dosen Mandarinen </b>', 4),
+(80, '<b> 2 Zwiebeln </b>', 4),
+(81, '250g Kochschinken', 4),
+(82, '4 Paprikaschoten', 4),
+(83, '3El Sojasauce', 4),
+(84, '2EL Zucker', 4),
+(85, '<b> 125g Lachsfilet </b>', 2),
+(86, '<b> 250g Brokkoli </b>', 2),
+(87, '<b> 120ml Kokosmilch </b>', 2),
+(88, '1TL Currypaste', 2),
+(89, '1EL Kokosöl', 2),
+(90, 'Salz und Pfeffer', 2),
+(91, 'Muskat', 2),
+(92, '<b> 800g Schweinefilet </b>', 13),
+(93, '<b> 20 Speckstreifen </b>', 13),
+(94, '<b> 1 Dose Champignons </b>', 13),
+(95, '500ml Sahne', 13),
+(96, '4El Tomatenmark', 13),
+(97, '2Tl Paprikapulver', 13),
+(98, 'Salz und Pfeffer', 13),
+(99, '<b> 400g Spaghetti </b>\r\n', 14),
+(100, 'Salz und Pfeffer', 14),
+(101, '<b> 250g Mozzarella </b>', 14),
+(102, '<b> Speckscheiben </b>', 14),
+(103, '1 Zwiebel', 14),
+(104, '3 Zehen Knoblauch', 14),
+(105, '1 Msp. Chilipulver', 14),
+(106, '2 El Olivenöl', 14),
+(107, '200ml Gemüsebrühe', 14),
+(108, '200ml Sahne', 14),
+(109, 'Muskat', 14);
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `auswahl`
+--
+ALTER TABLE `auswahl`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `matching`
+--
+ALTER TABLE `matching`
+  ADD PRIMARY KEY (`zutat_id`,`rezept_id`);
+
+--
+-- Indizes für die Tabelle `normalform`
+--
+ALTER TABLE `normalform`
+  ADD PRIMARY KEY (`primary`);
+
+--
+-- Indizes für die Tabelle `rezept`
+--
+ALTER TABLE `rezept`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `zutaten`
+--
+ALTER TABLE `zutaten`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `auswahl`
+--
+ALTER TABLE `auswahl`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=924;
+
+--
+-- AUTO_INCREMENT für Tabelle `normalform`
+--
+ALTER TABLE `normalform`
+  MODIFY `primary` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT für Tabelle `rezept`
+--
+ALTER TABLE `rezept`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT für Tabelle `zutaten`
+--
+ALTER TABLE `zutaten`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
