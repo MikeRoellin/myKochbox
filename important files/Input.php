@@ -287,26 +287,14 @@
 	</script>
 
 
-<!-- **************************************************************************-->
-<!-- Zutenausgabe --><!-- Zutenausgabe --><!-- Zutenausgabe --><!-- Zutenausgabe -->
+<!-- *******************************************************-->
+<!-- Zutenausgabe --><!-- Zutenausgabe --><!-- Zutenausgabe -->
 
 <?php if(isset($input)){ //Ausgabe nach Drücken des Buttons
 	$auswahl = $_POST["zutatenAuswahl"];
 	$auswahlString = implode("','", $auswahl);
 	$auswahltext = "'$auswahlString'";
 	$debug = 0;
-		if ($debug==1){
-			$kleinereAuswahl = array();
-			$i = 0;                     //Zähler für Erstellen reduzierter Listen
-			$AuswahlAnzahl = count($auswahl);
-			echo "<pre>";
-	 			print_r($auswahl);
-			echo "</pre>";
-			foreach($auswahl as $value){  //Liste erstellen mit einer Zutat weniger
-	  		array_push($kleinereAuswahl, "$value");
-	  		if(++$i == $AuswahlAnzahl - 1) break;
-				};
-			}
 
 	//ERSTELLEN DER TEMPORÄREN AUSWAHL LISTE IN LOCALHOST
 	include 'dbh.php';
@@ -316,8 +304,6 @@
 
 		mysqli_query($db_link,$input);
 	};
-
-
 
 	$AnzahlResultate ="SELECT COUNT(id) AS AnzahlResultate FROM rezept WHERE id IN(
 		SELECT id FROM normalform WHERE zutat IN(

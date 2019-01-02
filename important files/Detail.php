@@ -107,6 +107,7 @@
       </nav>
     </div>
   </header>
+
   <main>
     <?php
       include 'dbh.php';
@@ -118,6 +119,7 @@
       $x = mysqli_query($db_link,$BeschreibungLinkabfrage);
       $b = mysqli_fetch_assoc($x);
 
+      // Tabelle für Darstellung des Titels und Bild
       echo "<table>";
       echo "<tr> <td>";
       echo "<h1 class='Titel'>".$r["titel"]; echo "</h1></td>";
