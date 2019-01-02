@@ -2,7 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width,
+        initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Webseite für Rezepte">
   <meta name="author" content="MikeRoellin">
   <meta charset="utf-8">
@@ -14,13 +15,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <link rel="icon" type="image/vnd.microsoft.icon" href="images/favicon.ico">
+  <link rel="icon" type="image/vnd.microsoft.icon"
+        href="images/favicon.ico">
 
   <title>myKochbox</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
   <link href="cover.css" rel="stylesheet">
@@ -84,20 +87,27 @@
   <header>
   <div class="header">
     <!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
-    <!-- Code für Collapsible Navbar: https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_navbar_collapse -->
+    <!-- Code für Collapsible Navbar:
+    https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_navbar_collapse -->
     <!-- Navbarcode https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp -->
       <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-        <a class="navbar-brand" href="https://kochbox.localtunnel.me/myKochbox/Home.html">myKochbox</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <a class="navbar-brand"
+          href="https://kochbox.localtunnel.me/myKochbox/Home.html">myKochbox</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav nav-pills">
             <li class="nav-item">
-              <a class="nav-link" href="https://kochbox.localtunnel.me/myKochbox/Home.html">Startseite</a>
+              <a class="nav-link"
+                href="https://kochbox.localtunnel.me/myKochbox/Home.html">Startseite</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="https://kochbox.localtunnel.me/myKochbox/Input.php">Zutaten</a>
+              <a class="nav-link "
+                href="https://kochbox.localtunnel.me/myKochbox/Input.php">Zutaten</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="#">Detail</a>
@@ -122,8 +132,10 @@
       // Tabelle für Darstellung des Titels und Bild
       echo "<table>";
       echo "<tr> <td>";
-      echo "<h1 class='Titel'>".$r["titel"]; echo "</h1></td>";
-      echo "<td><img class='RezeptBild hidden-xs' src=".$r['bild']; echo "></td></tr></table>";
+      echo "<h1 class='Titel'>".$r["titel"];
+      echo "</h1></td>";
+      echo "<td><img class='RezeptBild hidden-xs' src=".$r['bild'];
+      echo "></td></tr></table>";
 
       $Zutatenabfrage = "SELECT zutaten FROM zutaten WHERE rezept_id=".$_GET['id'];
       $e = mysqli_query($db_link,$Zutatenabfrage);
@@ -137,7 +149,8 @@
       echo "<table id='my-table-id' class='table table-bordered table-responsive-sm' border=1>";
       while($r = mysqli_fetch_assoc($e)) {
         echo "<tr>";
-        echo "<td>"; echo $r['zutaten'];
+        echo "<td>";
+        echo $r['zutaten'];
         echo "</td>";
         echo "</tr>";
       }
@@ -156,7 +169,10 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+</script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="../../assets/js/vendor/popper.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>

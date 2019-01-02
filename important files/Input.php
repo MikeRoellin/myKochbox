@@ -111,7 +111,8 @@
 <meta name="description" content="Webseite für Rezepte">
 <meta name="author" content="MikeRoellin">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width,
+			initial-scale=1, shrink-to-fit=no">
 <!-- Link für Bootstrap Verwendung -->
 <!-- https://getbootstrap.com/docs/4.1/getting-started/download/ -->
 <link rel="stylesheet"
@@ -143,17 +144,23 @@
 	<header>
 		<div class="header">
 			<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-				<a class="navbar-brand" href="https://kochbox.localtunnel.me/myKochbox/Home.html">myKochbox</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+				<a class="navbar-brand"
+					href="https://kochbox.localtunnel.me/myKochbox/Home.html">myKochbox</a>
+				<button class="navbar-toggler"
+								type="button"
+								data-toggle="collapse"
+								data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"></span>
 				</button>
 			<div class="collapse navbar-collapse" id="collapsibleNavbar">
 				<ul class="navbar-nav nav-pills">
 					<li class="nav-item">
-						<a class="nav-link" href="https://kochbox.localtunnel.me/myKochbox/Home.html">Startseite</a>
+						<a class="nav-link"
+							href="https://kochbox.localtunnel.me/myKochbox/Home.html">Startseite</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active " href="https://kochbox.localtunnel.me/myKochbox/Input.php">Zutaten</a>
+						<a class="nav-link active "
+							href="https://kochbox.localtunnel.me/myKochbox/Input.php">Zutaten</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Detail</a>
@@ -180,16 +187,20 @@
 					<button class="accordion" type="button">Fleisch</button>
 					<div class="panel">
 						<div class="zutatenAuswahl">
-							<input type="checkbox" name="zutatenAuswahl[]" value="schwein">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="schwein">
 							<label>Schwein</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="lachs">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="lachs">
 							<label>Lachs</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="poulet">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="poulet">
 							<label>Poulet</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="speck">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="speck">
 							<label>Speck</label>
 						</div>
 					</div>
@@ -199,13 +210,16 @@
 					<button class="accordion" type="button">Gemüse</button>
 					<div class="panel">
 						<div class="zutatenAuswahl">
-							<input type="checkbox" name="zutatenAuswahl[]" value="tomate">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="tomate">
 							<label>Tomate</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="zwiebel">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="zwiebel">
 							<label>Zwiebel</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="kartoffel">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="kartoffel">
 							<label>Kartoffel</label>
 						</div>
 					</div>
@@ -215,13 +229,16 @@
 					<button class="accordion" type="button">Milchprodukte</button>
 					<div class="panel">
 						<div class="zutatenAuswahl">
-							<input type="checkbox" name="zutatenAuswahl[]" value="Ei">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="Ei">
 							<label>Ei</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="kaese">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="kaese">
 							<label>Käse</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="milch">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="milch">
 							<label>Milch</label>
 						</div>
 					</div>
@@ -231,13 +248,16 @@
 					<button class="accordion" type="button">Früchte</button>
 					<div class="panel">
 						<div class="zutatenAuswahl">
-							<input type="checkbox" name="zutatenAuswahl[]" value="apfel">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="apfel">
 							<label>Apfel</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="banane">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="banane">
 							<label>Banane</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="orange">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="orange">
 							<label>Orange</label>
 						</div>
 					</div>
@@ -247,13 +267,16 @@
 					<button class="accordion" type="button">Brot/Korn</button>
 					<div class="panel">
 						<div class="zutatenAuswahl">
-							<input type="checkbox" name="zutatenAuswahl[]" value="reis">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="reis">
 							<label>Reis</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="Pasta">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="Pasta">
 							<label>Pasta</label>
 
-							<input type="checkbox" name="zutatenAuswahl[]" value="Brot">
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="Brot">
 							<label>Brot</label>
 						</div>
 					</div>
@@ -332,7 +355,9 @@
 	if (mysqli_num_rows($resultat1) > 0) {
 	// Resultate in Reihen ausgeben
 		if ($r['AnzahlResultate'] >1){
-			echo "Es wurden ";echo $r['AnzahlResultate']; echo " geeignete Rezepte gefunden";
+			echo "Es wurden ";
+			echo $r['AnzahlResultate'];
+			echo " geeignete Rezepte gefunden";
 		};
 		if ($r['AnzahlResultate'] == 1){
 			echo "Es wurde 1 geeignetes Rezept gefunden";};
