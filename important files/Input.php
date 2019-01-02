@@ -221,6 +221,10 @@
 							<input type="checkbox" name="zutatenAuswahl[]"
 											value="kartoffel">
 							<label>Kartoffel</label>
+
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="pilz">
+							<label>Pilze</label>
 						</div>
 					</div>
 				</fieldset>
@@ -240,6 +244,10 @@
 							<input type="checkbox" name="zutatenAuswahl[]"
 											value="milch">
 							<label>Milch</label>
+
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="joghurt">
+							<label>Joghurt</label>
 						</div>
 					</div>
 				</fieldset>
@@ -259,6 +267,10 @@
 							<input type="checkbox" name="zutatenAuswahl[]"
 											value="orange">
 							<label>Orange</label>
+
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="zitrone">
+							<label>zitrone</label>
 						</div>
 					</div>
 				</fieldset>
@@ -278,6 +290,10 @@
 							<input type="checkbox" name="zutatenAuswahl[]"
 											value="Brot">
 							<label>Brot</label>
+
+							<input type="checkbox" name="zutatenAuswahl[]"
+											value="Mehl">
+							<label>Mehl</label>
 						</div>
 					</div>
 				</fieldset>
