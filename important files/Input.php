@@ -23,6 +23,7 @@
 		header{
 			height: 50px;
 		}
+		/* Navbar CSS https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp */
 		.navbar {
 			min-height: 50px;
 		}
@@ -35,6 +36,7 @@
 
 		.navbar-toggle {
 			/* Berechnung für Höhenanpassung des Headers */
+			/* https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height */
 			/* (Höhe in px - button height 34px) / 2  */
 			margin-top: 8px;
 			padding: 9px 10px !important;
@@ -44,12 +46,15 @@
 
 			.navbar-nav > li > a {
 				/* Berechnung für Höhenanpassung des Headers */
+				/* https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height */
 				/* (Höhe in px - line-height of 27px) / 2 */
 				padding-top: 11.5px;
 				padding-bottom: 11.5px;
 				line-height: 27px;
 				}
 			}
+			/* Accordion CSS
+			https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_accordion_symbol */
 		.accordion {
 			background-color: #eee;
 			color: #444;
@@ -107,6 +112,8 @@
 <meta name="author" content="MikeRoellin">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Link für Bootstrap Verwendung -->
+<!-- https://getbootstrap.com/docs/4.1/getting-started/download/ -->
 <link rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -123,12 +130,16 @@
 <body>
 
 	<?php
+	// $_POST aus selbe Seite ausführen
+	// https://stackoverflow.com/questions/17333901/php-form-on-submit-stay-on-same-page
 	if(isset($_POST['SubmitButton'])){ //check if form was submitted
 		$input = $_POST["zutatenAuswahl"];}; //get input text
 		?>
 
 
 	<!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
+	<!-- Code für Collapsible Navbar: https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_navbar_collapse -->
+	<!-- Navbarcode https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp -->
 	<header>
 		<div class="header">
 			<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
@@ -177,6 +188,9 @@
 
 							<input type="checkbox" name="zutatenAuswahl[]" value="poulet">
 							<label>Poulet</label>
+
+							<input type="checkbox" name="zutatenAuswahl[]" value="speck">
+							<label>Speck</label>
 						</div>
 					</div>
 				</fieldset>
@@ -253,6 +267,7 @@
 		</div>
 
 <!-- JavaScript für Bewegung des Auswahl-Accordions  -->
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_accordion_symbol -->
 	<script>
 		var acc = document.getElementsByClassName("accordion");
 		var i;
@@ -310,7 +325,7 @@
 		GROUP BY id HAVING COUNT(DISTINCT zutat) = (SELECT COUNT(zutat) FROM auswahl)
 		UNION SELECT id FROM normalform WHERE zutat IN (
 			select zutat from auswahl)
-		GROUP BY id HAVING COUNT(DISTINCT zutat)>=2)";
+		GROUP BY id HAVING COUNT(DISTINCT zutat)>=3)";
 	$x = mysqli_query($db_link,$AnzahlResultate);
 	$r = mysqli_fetch_assoc($x);
 
@@ -322,7 +337,7 @@
 		GROUP BY id HAVING COUNT(DISTINCT zutat) = (SELECT COUNT(zutat) FROM auswahl)
 		UNION SELECT id FROM normalform WHERE zutat IN (
 			select zutat from auswahl)
-		GROUP BY id HAVING COUNT(DISTINCT zutat)>=2)";
+		GROUP BY id HAVING COUNT(DISTINCT zutat)>=3)";
 
 	$resultat1 = mysqli_query($db_link, $abfrage)
 	  or die ("Konnte die Abfrage nicht ausführen");
@@ -354,12 +369,6 @@
 
 	};
 
-//SELECT rezept.titel FROM rezept JOIN matching ON rezept.id = matching.rezept_id JOIN zutaten ON matching.zutat_id = zutaten.id
-//WHERE zutaten.zutaten IN ("Pasta", "Schinken") GROUP BY rezept.id HAVING count(*) = 2 order by count(*) desc
-//SELECT zutaten FROM zutaten JOIN matching ON matching.zutat_id=zutaten.id WHERE rezept_id=1 and zutaten not in ('Pasta')
-
-// 		$abfrage = "SELECT DISTINCT rezept.titel FROM rezept JOIN matching ON rezept.id = matching.rezept_id JOIN zutaten ON matching.zutat_id = zutaten.id
-// WHERE zutaten.zutaten IN (" . implode(',', $zutaten) . ")";
 
 
 //FALLS KEINE EXAKTEN ERGEBNISSE GEFUNDEN WERDEN
@@ -372,14 +381,14 @@
 				(SELECT zutat FROM auswahl)
 				GROUP BY id HAVING COUNT(DISTINCT zutat) = (SELECT COUNT(zutat) FROM auswahl)
 				UNION SELECT id FROM normalform WHERE zutat IN
-					(select zutat from auswahl))
+					(select zutat from auswahl)GROUP BY id HAVING COUNT(DISTINCT zutat)>=2)
 				AND id not in(
 					-- SELECT aus Abfrage1, um erneutes Anzeigen des Rezepts zu verhindern
 					SELECT id FROM normalform WHERE zutat IN(SELECT zutat FROM auswahl)
 					GROUP BY id HAVING COUNT(DISTINCT zutat) = (SELECT COUNT(zutat) FROM auswahl)
 					UNION SELECT id FROM normalform WHERE zutat IN
 						(select zutat from auswahl)
-					GROUP BY id HAVING COUNT(DISTINCT zutat)>=2
+					GROUP BY id HAVING COUNT(DISTINCT zutat)>=3
 		)";
 
 		$resultat2 = mysqli_query($db_link, $abfrage2)
@@ -389,7 +398,7 @@
 			echo "Leider gibt es keine Rezepte";}
 
 		if (mysqli_num_rows($resultat2) > 0) {
-			echo "<br> Vieleicht magst du zusätzlich eines dieser Rezepte:";
+			echo "<br> Vielleicht magst du zusätzlich eines dieser Rezepte:";
 		// Resultate in Tabelle ausgeben
 		echo "<div>";
 			echo "<table width='100%' id='my-table-id' class='table table-bordered table-responsive-sm' border=1>";

@@ -7,6 +7,9 @@
   <meta name="author" content="MikeRoellin">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Link für Bootstrap Verwendung -->
+  <!-- https://getbootstrap.com/docs/4.1/getting-started/download/ -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -25,6 +28,7 @@
     header{
       height: 80px;
     }
+    /* Navbar CSS https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp */
     .navbar {
       min-height: 50px;
     }
@@ -37,6 +41,7 @@
 
     .navbar-toggle {
       /* Berechnung für Höhenanpassung des Headers */
+      /* https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height */
       /* (Höhe in px - button height 34px) / 2 */
       margin-top: 8px;
       padding: 9px 10px !important;
@@ -45,6 +50,7 @@
     @media (min-width: 768px) {
       .navbar-nav > li > a {
         /* Berechnung für Höhenanpassung des Headers */
+        /* https://bootstrapious.com/p/how-to-change-bootstrap-navbar-height */
         /* (Höhe in px - line-height of 27px) / 2 */
         padding-top: 11.5px;
         padding-bottom: 11.5px;
@@ -78,6 +84,8 @@
   <header>
   <div class="header">
     <!-- Header --><!-- Header --><!-- Header --><!-- Header --><!-- Header -->
+    <!-- Code für Collapsible Navbar: https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_navbar_collapse -->
+    <!-- Navbarcode https://www.w3schools.com/bootstrap4/bootstrap_navbar.asp -->
       <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <a class="navbar-brand" href="https://kochbox.localtunnel.me/myKochbox/Home.html">myKochbox</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
